@@ -8,10 +8,26 @@
 
 <script>
   export default {
-    
+    head() {
+    return {
+      link: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;1,300&display=swap",
+      },
+    ],
+    }
+  },
   }
 </script>
-
 <style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;1,300&display=swap');
 
