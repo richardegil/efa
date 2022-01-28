@@ -1,0 +1,14 @@
+$ease: cubic-bezier(0.77, 0, 0.175, 1);
+$transition: all $ease 0.25s;
+$body-font: 'Inter', sans-serif;
+$accent-font: 'overpass mono', monospace;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $body-font;
+}
