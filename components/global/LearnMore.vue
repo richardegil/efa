@@ -1,22 +1,31 @@
 <template>
-  <div :class="{active:showInfo}" class="info--wrapper">
-    <button class="button--show-more" @click="showModal">
+  <div :class="{active:showUI}" class="info--wrapper">
+    <button :class="{active:showInfo}" class="button--show-more" @click="showModal">
       +
     </button>
-    <div :class="{active:show}" class="modal">
-      this is some content
-      <button @click="showInfoUI">Hide UI</button>
+    <div :class="{active:showInfo}" class="modal">
+      <p><strong>Even from afar</strong> is the digital sketchbook of <a href="https://www.richardegil.com">Richard Gil</a><p>
+      <p>Feel free to check out the <a href="/archives">archives</a> if you missed a sketch</p>
+      <button class="button--hide-ui" @click="showInfoUI">Press "H" to hide the UI</button>
+      <button class="button--hide-ui" @click="closeModal">Close</button>
     </div>
   </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex';
+
   export default {
     data: () => {
       return {
         show: false,
         showInfo: true,
       }
+    },
+    computed: {
+      ...mapState([
+          "showUI",
+      ]),
     },
     created() {
 
@@ -29,12 +38,18 @@
       });
     },
     methods: {
+      ...mapActions([
+        "toggleUIState"
+      ]),
       showModal() {
-        this.show = !this.show;
+        this.showInfo = !this.showInfo;
+      },
+      closeModal() {
+        this.showInfo = false;
       },
       showInfoUI() {
         console.log('showui');
-        this.showInfo = !this.showInfo;
+        this.toggleUIState();
         
       }
     }
@@ -44,6 +59,7 @@
 <style lang="scss">
   .info--wrapper {
     opacity: 0;
+    transition: $transition;
 
     &.active {
       opacity: 1;
@@ -68,15 +84,32 @@
     right: 1rem;
     bottom: 1rem;
     font-size: 1rem;
+    cursor: pointer;
+    transition: $transition;
+
+    &.active {
+      transform: rotate(45deg);
+    }
   }
 
-    button.button--hide-ui {
+  button.button--hide-ui {
+    padding: 0.5rem;
+    outline: 0;
+    border: 0;
+    border-radius: 0.5rem;;
+    font-family: $accent-font;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: $transition;
 
+    &:hover {
+      background-color: lightpink;
     }
+  }
 
   .modal {
     position: absolute;
-    background: black;
+    background: #333;
     width: 100%;
     max-width: 300px;
     height: auto;
@@ -91,5 +124,19 @@
       opacity: 1;
     }
 
+  }
+
+  p {
+    margin-bottom: 1rem;
+    font-family: $accent-font;
+
+    a {
+      color: cyan;
+      transition: $transition;
+
+      &:hover {
+        color: lightpink;
+      }
+    }
   }
 </style>
