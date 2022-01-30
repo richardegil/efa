@@ -19,7 +19,7 @@
     data: () => {
       return {
         show: false,
-        showInfo: true,
+        showInfo: false,
       }
     },
     computed: {
