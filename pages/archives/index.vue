@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <h1>My Archives</h1>
     <ul>
       <li>
@@ -16,5 +16,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .wrapper {
+    padding: 4rem;
+  }
 
+  h1 {
+    font-family: $accent-font;
+  }
+
+  ul {
+    list-style: disc;
+  }
 </style>
