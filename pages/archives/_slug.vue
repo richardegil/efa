@@ -1,7 +1,5 @@
 <template>
   <div>
-    Archives {{ $route.params.slug }}
-    {{ compName }}
     <component :is="compName" /> 
   </div>
 </template>
